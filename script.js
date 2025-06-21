@@ -1,94 +1,97 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation Toggle
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mainNav = document.querySelector('.main-nav');
-
-    mobileNavToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-        this.querySelector('i').classList.toggle('fa-bars');
-        this.querySelector('i').classList.toggle('fa-times');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sideNav = document.querySelector('.side-nav');
+    const overlay = document.querySelector('.overlay');
+    const closeNav = document.querySelector('.close-nav');
+    
+    menuToggle.addEventListener('click', function() {
+        sideNav.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
     });
-
-    // Close mobile menu when clicking on a link
-    const navLinks = document.querySelectorAll('.main-nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                mainNav.classList.remove('active');
-                mobileNavToggle.querySelector('i').classList.remove('fa-times');
-                mobileNavToggle.querySelector('i').classList.add('fa-bars');
-            }
-        });
+    
+    closeNav.addEventListener('click', function() {
+        sideNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
     });
-
-    // Simulate loading materials (in a real app, this would be an API call)
-    function loadMaterials() {
-        // This would be replaced with actual API fetch
-        console.log('Loading study materials...');
-    }
-
-    // Simulate loading classes (in a real app, this would be an API call)
-    function loadClasses() {
-        // This would be replaced with actual API fetch
-        console.log('Loading class data...');
-    }
-
-    // Initialize the dashboard
-    function initDashboard() {
-        loadMaterials();
-        loadClasses();
+    
+    overlay.addEventListener('click', function() {
+        sideNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    // Simulate loading data
+    function loadDashboardData() {
+        // In a real app, this would fetch from an API
+        console.log('Loading dashboard data...');
         
-        // Add click event to all download buttons
+        // Simulate network delay
+        setTimeout(() => {
+            // Update any dynamic content here
+        }, 1000);
+    }
+    
+    // Initialize the app
+    function initApp() {
+        loadDashboardData();
+        
+        // Add click handlers for download buttons
         const downloadButtons = document.querySelectorAll('.download-btn');
-        downloadButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
+        downloadButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const materialTitle = this.closest('.material-card').querySelector('h3').textContent;
-                alert(`Downloading: ${materialTitle}`);
+                const materialCard = this.closest('.material-card');
+                const materialName = materialCard.querySelector('h4').textContent;
+                alert(`Downloading: ${materialName}`);
+                
                 // In a real app, this would trigger the download
+                // or open the video player
             });
         });
         
-        // Add click event to all view buttons
-        const viewButtons = document.querySelectorAll('.view-btn');
-        viewButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const className = this.closest('.class-card').querySelector('h3').textContent;
-                alert(`Viewing details for: ${className}`);
-                // In a real app, this would navigate to class details
+        // Add click handler for join class button
+        const joinButtons = document.querySelectorAll('.class-status.active');
+        joinButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const classCard = this.closest('.class-card');
+                const className = classCard.querySelector('h4').textContent;
+                alert(`Joining: ${className}`);
+                
+                // In a real app, this would launch the video meeting
             });
         });
     }
-
-    // Initialize the dashboard when the page loads
-    initDashboard();
-
-    // User dropdown functionality (would be more complex in a real app)
-    const userProfile = document.querySelector('.user-profile');
-    userProfile.addEventListener('click', function() {
-        alert('User menu would open here');
-        // In a real app, this would show a dropdown menu
-    });
-
-    // Responsive adjustments
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            mainNav.classList.remove('active');
-            mobileNavToggle.querySelector('i').classList.remove('fa-times');
-            mobileNavToggle.querySelector('i').classList.add('fa-bars');
-        }
-    });
-
-    // Simulate notification count
-    function updateNotificationCount() {
-        // In a real app, this would check for new messages/notifications
-        const notificationCount = Math.floor(Math.random() * 5);
-        if (notificationCount > 0) {
-            const messagesLink = document.querySelector('.main-nav a[href="#"]:nth-child(5)');
-            messagesLink.innerHTML += `<span class="notification-badge">${notificationCount}</span>`;
-        }
+    
+    // Initialize the application
+    initApp();
+    
+    // Service Worker Registration for PWA
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').then(registration => {
+                console.log('ServiceWorker registration successful');
+            }).catch(err => {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
     }
-
-    updateNotificationCount();
+    
+    // Detect if app is running as PWA
+    window.addEventListener('appinstalled', () => {
+        console.log('App was installed as PWA');
+    });
+    
+    // Handle offline status
+    window.addEventListener('online', () => {
+        console.log('Connection restored');
+        // Could show a "back online" notification
+    });
+    
+    window.addEventListener('offline', () => {
+        console.log('Connection lost');
+        // Could show an "offline" warning
+    });
 });
