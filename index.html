@@ -2,165 +2,176 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diplomat Repetition Center - Student Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Diplomat Repetition Center</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3498db">
 </head>
 <body>
-    <!-- Header/Navigation -->
-    <header class="header">
-        <div class="logo-container">
-            <img src="logo1.png" alt="Diplomat Repetition Center Logo" class="logo">
-            <h1>Diplomat Repetition Center</h1>
-            <!-- Mobile Navigation -->
-    <div class="mobile-nav-toggle">
-        <i class="fas fa-bars"></i>
-    </div>
-        </div>
-        <nav class="main-nav">
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- Header with Hamburger Menu -->
+        <header class="app-header">
+            <button class="menu-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <img src="logo1.png" alt="Diplomat Logo">
+                <h1>Diplomat</h1>
+            </div>
+            <div class="user-avatar">
+                <img src="user-avatar.jpg" alt="User">
+            </div>
+        </header>
+
+        <!-- Side Navigation -->
+        <nav class="side-nav">
+            <div class="user-profile">
+                <img src="user-avatar.jpg" alt="User">
+                <div>
+                    <h3>John Doe</h3>
+                    <p>Form 5 Science</p>
+                </div>
+                <button class="close-nav">&times;</button>
+            </div>
             <ul>
-                <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="#"><i class="fas fa-book"></i> My Classes</a></li>
-                <li><a href="#"><i class="fas fa-file-alt"></i> Study Materials</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Materials</a></li>
                 <li><a href="#"><i class="fas fa-calendar-alt"></i> Timetable</a></li>
-                <li><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="#"><i class="fas fa-comments"></i> Messages <span class="badge">3</span></a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </nav>
-        <div class="user-profile">
-            <img src="user-avatar.jpg" alt="User Avatar" class="avatar">
-            <span class="username">John Doe</span>
-            <i class="fas fa-chevron-down dropdown-icon"></i>
-        </div>
-    </header>
+        <div class="overlay"></div>
 
-    
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Banner -->
+            <section class="welcome-banner">
+                <h2>Welcome back, John!</h2>
+                <p>Next class: Mathematics at 10:00 AM</p>
+            </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Welcome Section -->
-        <section class="welcome-section">
-            <h2>Welcome back, John!</h2>
-            <p>You have 3 classes today. Next class: Mathematics at 10:00 AM</p>
-        </section>
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h3 class="section-title">Quick Actions</h3>
+                <div class="actions-grid">
+                    <a href="#" class="action-card">
+                        <i class="fas fa-book-open"></i>
+                        <span>My Classes</span>
+                    </a>
+                    <a href="#" class="action-card">
+                        <i class="fas fa-file-download"></i>
+                        <span>Materials</span>
+                    </a>
+                    <a href="#" class="action-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Timetable</span>
+                    </a>
+                    <a href="#" class="action-card">
+                        <i class="fas fa-comment-alt"></i>
+                        <span>Messages</span>
+                    </a>
+                </div>
+            </section>
 
-        <!-- Quick Actions -->
-        <section class="quick-actions">
-            <div class="action-card">
-                <i class="fas fa-book-open"></i>
-                <h3>View Classes</h3>
-                <p>Access your enrolled classes</p>
-            </div>
-            <div class="action-card">
-                <i class="fas fa-file-download"></i>
-                <h3>Download Materials</h3>
-                <p>Get study notes and past papers</p>
-            </div>
-            <div class="action-card">
-                <i class="fas fa-calendar-plus"></i>
-                <h3>View Timetable</h3>
-                <p>Check your weekly schedule</p>
-            </div>
-            <div class="action-card">
-                <i class="fas fa-comment-alt"></i>
-                <h3>Send Message</h3>
-                <p>Contact your teachers</p>
-            </div>
-        </section>
-
-        <!-- Upcoming Classes -->
-        <section class="upcoming-classes">
-            <h2><i class="fas fa-calendar-day"></i> Upcoming Classes</h2>
-            <div class="class-list">
+            <!-- Today's Classes -->
+            <section class="todays-classes">
+                <div class="section-header">
+                    <h3 class="section-title">Today's Classes</h3>
+                    <a href="#" class="see-all">See All</a>
+                </div>
                 <div class="class-card">
+                    <div class="class-time">
+                        <span>10:00</span>
+                        <span>AM</span>
+                    </div>
                     <div class="class-info">
-                        <h3>Mathematics</h3>
-                        <p><i class="fas fa-clock"></i> Today, 10:00 AM - 12:00 PM</p>
-                        <p><i class="fas fa-user-tie"></i> Mr Eyenga</p>
+                        <h4>Mathematics</h4>
+                        <p><i class="fas fa-user-tie"></i> Prof. Ndifon</p>
                         <p><i class="fas fa-map-marker-alt"></i> Room 3</p>
                     </div>
-                    <button class="btn view-btn">View Details</button>
+                    <button class="class-status active">Join Now</button>
                 </div>
                 <div class="class-card">
+                    <div class="class-time">
+                        <span>02:00</span>
+                        <span>PM</span>
+                    </div>
                     <div class="class-info">
-                        <h3>Physics</h3>
-                        <p><i class="fas fa-clock"></i> Tomorrow, 8:00 AM - 10:00 AM</p>
-                        <p><i class="fas fa-user-tie"></i> Mr. Theophile</p>
+                        <h4>Physics</h4>
+                        <p><i class="fas fa-user-tie"></i> Dr. Mbua</p>
                         <p><i class="fas fa-map-marker-alt"></i> Lab 1</p>
                     </div>
-                    <button class="btn view-btn">View Details</button>
+                    <button class="class-status upcoming">Upcoming</button>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Recent Materials -->
-        <section class="recent-materials">
-            <h2><i class="fas fa-file-alt"></i> Recently Uploaded Materials</h2>
-            <div class="materials-grid">
-                <div class="material-card">
-                    <div class="material-icon pdf">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h3>Mathematics Notes</h3>
-                    <p>Algebra and Calculus</p>
-                    <p class="upload-date">Uploaded: 2 days ago</p>
-                    <button class="btn download-btn">Download</button>
+            <!-- Recent Materials -->
+            <section class="recent-materials">
+                <div class="section-header">
+                    <h3 class="section-title">Recent Materials</h3>
+                    <a href="#" class="see-all">See All</a>
                 </div>
-                <div class="material-card">
-                    <div class="material-icon doc">
-                        <i class="fas fa-file-word"></i>
+                <div class="materials-list">
+                    <div class="material-card">
+                        <div class="material-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="material-details">
+                            <h4>Mathematics Notes</h4>
+                            <p>Algebra and Calculus</p>
+                            <div class="material-meta">
+                                <span><i class="fas fa-clock"></i> 2 days ago</span>
+                                <span><i class="fas fa-download"></i> 1.2MB</span>
+                            </div>
+                        </div>
+                        <button class="download-btn"><i class="fas fa-download"></i></button>
                     </div>
-                    <h3>Physics Past Questions</h3>
-                    <p>2020-2023 GCE Papers</p>
-                    <p class="upload-date">Uploaded: 1 week ago</p>
-                    <button class="btn download-btn">Download</button>
-                </div>
-                <div class="material-card">
-                    <div class="material-icon video">
-                        <i class="fas fa-video"></i>
+                    <div class="material-card">
+                        <div class="material-icon video">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="material-details">
+                            <h4>Chemistry Tutorial</h4>
+                            <p>Organic Chemistry</p>
+                            <div class="material-meta">
+                                <span><i class="fas fa-clock"></i> 3 days ago</span>
+                                <span><i class="fas fa-play-circle"></i> 15 min</span>
+                            </div>
+                        </div>
+                        <button class="download-btn"><i class="fas fa-play"></i></button>
                     </div>
-                    <h3>Chemistry Video</h3>
-                    <p>Organic Chemistry Tutorial</p>
-                    <p class="upload-date">Uploaded: 3 days ago</p>
-                    <button class="btn download-btn">Watch</button>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Kondengui, Yaoundé, Cameroon</p>
-                <p><i class="fas fa-phone"></i> +237 6XX XXX XXX</p>
-                <p><i class="fas fa-envelope"></i> info@diplomat-repetition.com</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Courses</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Diplomat Repetition Center. All Rights Reserved.</p>
-        </div>
-    </footer>
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#" class="active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-book"></i>
+                <span>Classes</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-file-alt"></i>
+                <span>Materials</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
 
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
